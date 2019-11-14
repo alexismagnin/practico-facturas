@@ -1,0 +1,151 @@
+{
+  "producto": [
+    {
+      "id": -1,
+      "codigo": "PROD PRUEBA",
+      "descripcion": "Producto creado para probar el ABM",
+      "precioUnitario": 2.49
+    },
+    {
+      "id": 0,
+      "codigo": "PROD PRUEBA-1",
+      "descripcion": "Oooootro producto creado para probar el ABM",
+      "precioUnitario": 165
+    },
+    {
+      "id": 543,
+      "codigo": "MERMELADA FRUT BC",
+      "descripcion": "Mermelada BC Frutilla",
+      "precioUnitario": 120.45
+    }
+  ],
+  "factura": [
+    {
+      "id": -1,
+      "tipo": "C",
+      "fecha": "2019/10/22",
+      "numero": 0,
+      "puntoVenta": 15,
+      "clienteID": 2,
+      "total": 333,
+      "listaItems": [
+        {
+          "id": 1,
+          "cantidad": 1,
+          "productoId": -1,
+          "codigo": "PROD PRUEBA",
+          "descripcion": "alguna",
+          "precioUnitario": 333,
+          "iva": 0,
+          "subtotal": 333
+        },
+        {
+          "id": 14,
+          "cantidad": 13,
+          "productoId": -12,
+          "codigo": "PROD PRUEBA 432",
+          "descripcion": "algunasssssss",
+          "precioUnitario": 333543453,
+          "iva": 125,
+          "subtotal": 3335
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "tipo": "C",
+      "fecha": "2019/11/03",
+      "numero": 1,
+      "puntoVenta": 1,
+      "clienteID": 1,
+      "total": 495,
+      "listaItems": [
+        {
+          "id": 0,
+          "cantidad": 3,
+          "productoId": 0,
+          "codigo": "PROD PRUEBA-1",
+          "descripcion": "Oooootro producto creado para probar el ABM",
+          "precioUnitario": 165,
+          "iva": 0,
+          "subtotal": 495
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "tipo": "B",
+      "fecha": "2019-11-13",
+      "numero": 123431,
+      "total": 240.9,
+      "listaItems": [
+        {
+          "productoId": "543",
+          "iva": 0,
+          "cantidad": 2,
+          "codigo": "MERMELADA FRUT BC",
+          "descripcion": "Mermelada BC Frutilla",
+          "precioUnitario": 120.45,
+          "subtotal": 240.9
+        }
+      ],
+      "puntoVenta": 12,
+      "clienteID": "3"
+    },
+    {
+      "id": 3,
+      "tipo": "A",
+      "fecha": "2019-11-11",
+      "numero": 345432,
+      "total": 129.4887,
+      "listaItems": [
+        {
+          "productoId": "543",
+          "iva": 0,
+          "cantidad": 1,
+          "codigo": "MERMELADA FRUT BC",
+          "descripcion": "Mermelada BC Frutilla",
+          "precioUnitario": 120.45,
+          "subtotal": 120.45
+        },
+        {
+          "productoId": "-1",
+          "iva": 21,
+          "cantidad": 3,
+          "codigo": "PROD PRUEBA",
+          "descripcion": "Producto creado para probar el ABM",
+          "precioUnitario": 2.49,
+          "subtotal": 9.0387
+        }
+      ],
+      "puntoVenta": 1,
+      "clienteID": "321"
+    }
+  ],
+  "cliente": [
+    {
+      "id": 1,
+      "nombre": "Alexis Magnin",
+      "direccion": "Medus 121, San Benito",
+      "cuit": "20-31307608-4"
+    },
+    {
+      "id": "3",
+      "nombre": "Russell Wilson",
+      "direccion": "Seattle",
+      "cuit": "33444333333"
+    },
+    {
+      "id": "2",
+      "nombre": "Carlos Manzana",
+      "direccion": "La otra casa bis",
+      "cuit": "4523764532432"
+    },
+    {
+      "id": 321,
+      "nombre": "Constanza Tortul",
+      "direccion": "La otra casa bis bis",
+      "cuit": "41561523256"
+    }
+  ]
+}

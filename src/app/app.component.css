@@ -1,0 +1,53 @@
+.menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 20%;
+    min-height: 30px;
+    background-color: rgb(100, 190, 100);
+    border-width: 0 0 0 2px;
+    border-color: rgb(53, 112, 53);
+    border-style: solid;;
+}
+
+.menu-opcion {
+    display: flex;
+    border-width: 2px 2px 2px 0;
+    border-color: rgb(53, 112, 53);
+    border-style: solid;;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+    color: seashell;
+    font-weight: bold;
+    font-size: 20pt;
+}
+
+a {color: seashell;}         /* Unvisited link  */
+a:visited {color: seashell;} /* Visited link    */
+a:hover {color: palegreen;}   /* Mouse over link */
+a:active {color: olivedrab}  /* Selected link   */
+
+.main {
+    display: flex;
+    margin-top: 1%;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.main > * {
+    width: 80%;
+}
+
+.cuerpo {
+    padding: 20pt;
+    background-color: rgb(238, 252, 238);
+    border-width: 2px 2px;
+    border-color: rgb(53, 112, 53);
+    border-style: solid;;
+}

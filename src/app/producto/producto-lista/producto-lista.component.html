@@ -1,0 +1,32 @@
+<h4>PRODUCTOS
+<button type="button" routerLink="/producto/nuevo" class="btn btn-outline-success">NUEVO PRODUCTO</button>
+</h4>
+<table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Código</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio Unitario</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of _prodRepo.getAll()">
+        <th scope="row">{{producto.id}}</th>
+        <td>{{producto.codigo}}</td>
+        <td>{{producto.descripcion}}</td>
+        <td>$S{{producto.precioUnitario}}</td>
+        <td style="width: 150px;" >
+          <div class="d-flex justify-content-between">
+            <button type="button" routerLink="/producto/editar/{{producto.id}}" class="btn btn-outline-primary" title="Editar {{producto.codigo}}">
+              <i class="material-icons">Editar</i>
+            </button>
+            <button (click)="eliminarProducto(producto.id)" type="button" class="btn btn-danger" title="Eliminar {{producto.codigo}}">
+              <i class="material-icons">Borrar</i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,36 @@
+<h4>FACTURAS
+<button type="button" routerLink="/factura/nueva" class="btn btn-outline-success">NUEVA FACTURA</button>
+</h4>
+<table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">PtoVenta</th>
+        <th scope="col">N°</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Total</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let factura of _facturaRepo.getAll()">
+        <th scope="row">{{factura.id}}</th>
+        <td>{{factura.tipo}}</td>
+        <td>{{factura.fecha}}</td>
+        <td>{{factura.puntoVenta}}</td>
+        <td>{{factura.numero}}</td>
+        <td>{{factura.cliente.nombre}}</td>
+        <td>${{factura.total}}</td>
+        <td style="width: 150px;" >
+          <div class="d-flex justify-content-between">
+            <button type="button" routerLink="/factura/detalle/{{factura.id}}" class="btn btn-outline-primary" 
+                title="Ver {{factura.tipo}} {{factura.puntoVenta}}-{{factura.numero}}">
+              <i class="material-icons">Detalles</i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

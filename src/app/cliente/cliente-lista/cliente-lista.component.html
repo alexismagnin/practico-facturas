@@ -1,0 +1,32 @@
+<h4>CLIENTES 
+<button type="button" routerLink="/cliente/nuevo" class="btn btn-outline-success">NUEVO CLIENTE</button>
+</h4>
+<table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">CUIT</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of _clienteRepo.getAll()">
+        <th scope="row">{{cliente.id}}</th>
+        <td>{{cliente.nombre}}</td>
+        <td>{{cliente.direccion}}</td>
+        <td>{{cliente.cuit}}</td>
+        <td style="width: 150px;" >
+          <div class="d-flex justify-content-between">              
+            <button type="button" routerLink="/cliente/editar/{{cliente.id}}" class="btn btn-outline-primary" title="Editar {{cliente.nombre}}">
+              <i class="material-icons">Editar</i>
+            </button>
+            <button (click)="eliminarCliente(cliente.id)" type="button" class="btn btn-danger" title="Eliminar {{cliente.nombre}}">
+              <i class="material-icons">Borrar</i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,127 @@
+<div style="border-bottom: dimgray solid 1px;">
+  <h3 class="text-secondary">{{detalles ? 'DETALLE' : 'NUEVA'}} FACTURA {{DETALLES ? ': '+factura.tipo+' '+factura.puntoVenta+'-'+factura.numero : ''}}</h3>
+</div><br>
+<form (ngSubmit)="guardar()">
+  <div *ngIf="!detalles">
+    <div class="form-group row">
+      <div class="col-5">
+        <label for="edFecha">Fecha</label>
+        <input type="date" class="form-control" id="edFecha" [(ngModel)]="factura.fecha" name="facturaFecha">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-1">
+        <label for="cbTipo">Tipo</label>            
+        <select name="facturaTipo" class="form-control" id="cbTipo" [(ngModel)]="factura.tipo">
+          <option value="A" selected>A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+        </select>
+      </div> 
+      <div class="col-2">    
+        <label for="edPtoVenta">N° Punto Venta</label>
+        <input type="number" class="form-control" id="edPtoVenta" [(ngModel)]="factura.puntoVenta" name="facturaPtoVenta">
+      </div>
+      <div class="col-2"> 
+        <label> N° Punto Factura</label>
+        <input type="number" class="form-control" id="edNro" [(ngModel)]="factura.numero" name="facturaNumero">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-5"> 
+        <label for="cbCliente">Cliente</label>
+        <select name="facturaCliente" class="form-control" id="cbCliente" [(ngModel)]="factura.clienteID">
+          <option *ngFor="let cliente of _clienteRepo.getAll()" [value]="cliente.id">{{cliente.id}} - {{cliente.nombre}} - {{cliente.cuit}}</option>
+        </select>
+      </div>    
+    </div>
+  </div>
+
+  <div *ngIf="detalles">
+      <div class="form-group row">
+          <div class="col-5">
+            <label for="edFecha" style="font-weight: bold;">Fecha</label>
+            <input type="date" readonly class="form-control" id="edFecha" [(ngModel)]="factura.fecha" name="facturaFecha">
+          </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-1">
+          <label for="cbTipo" style="font-weight: bold;">Tipo</label>
+          <input type="text" readonly class="form-control" id="cbTipo" [(ngModel)]="factura.tipo" name="facturaTipo">
+        </div> 
+        <div class="col-2">    
+          <label for="edPtoVenta" style="font-weight: bold;">N° Punto Venta</label>
+          <input type="number" readonly class="form-control" id="edPtoVenta" [(ngModel)]="factura.puntoVenta" name="facturaPtoVenta">
+        </div>
+        <div class="col-2"> 
+          <label style="font-weight: bold;"> N° Punto Factura</label>
+          <input type="number" readonly class="form-control" id="edNro" [(ngModel)]="factura.numero" name="facturaNumero">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-5"> 
+          <label for="cbCliente" style="font-weight: bold;">Cliente</label>
+          <input type="text" readonly class="form-control" id="cbCliente" name="facturaCliente"
+          value="{{factura.cliente.id}} - {{factura.cliente.nombre}} - {{factura.cliente.cuit}}">
+        </div>    
+      </div>
+    </div>
+
+  <h4>LISTA DE ITEMS</h4>
+  <div *ngIf="!detalles" class="col-sm-10">
+    <div class="form-group row">
+      <div class="col-5">
+        <label for="cbProducto">Producto</label>
+        <select name="itemProducto" id="cbProducto" class="form-control" [(ngModel)]="itemSeleccionado.productoId" placeholder="Seleccione producto">
+          <option *ngFor="let producto of _productoRepo.getAll()" [value]="producto.id">{{producto.codigo}}</option>
+        </select>
+      </div>
+      <div class="col-2">
+        <label for="edIva">IVA%</label>
+        <input type="number" id="edIva"class="form-control" name="itemIva" [(ngModel)]="itemSeleccionado.iva">
+      </div> 
+      <div class="col-2">
+        <label for="edCantidad">Cantidad</label>
+        <input type="number" id="edCantidad" class="form-control" name="itemCantidad" [(ngModel)]="itemSeleccionado.cantidad">
+      </div>
+      <div class="col-auto" style="display: flex; align-items: flex-end;">
+        <button type="button" class="btn btn-success" (click)="agregarItem()">AGREGAR ITEM</button>
+      </div>
+    </div>
+  </div>
+    
+  <div class="form-group row">
+    <div class="col-10" style="display:flex; justify-content: flex-start; border-bottom: 1px solid black; background-color: gray; font-weight: bold;">
+      <div class="col-1" style="display:flex; justify-content: center;">prodID</div>
+      <div class="col-6">Producto</div>
+      <div class="col-1" style="display:flex; justify-content: center;">Cantidad</div>
+      <div class="col-2" style="display:flex; justify-content: center;">PU</div>
+      <div class="col-1" style="display:flex; justify-content: center;">IVA%</div>
+      <div class="col-1" style="display:flex; justify-content: center;">Subtotales</div>
+    </div>
+    <div class="col-sm-10" style="display:flex; justify-content: flex-start; border-bottom: 1px solid black;" *ngFor="let item of factura.listaItems">
+      <div class="col-sm-1" style="display:flex; justify-content: center;">{{item.productoId}}</div>
+      <div class="col-sm-6">{{item.codigo}}</div>
+      <div class="col-sm-1" style="display:flex; justify-content: center;">{{item.cantidad}} u</div>
+      <div class="col-sm-2" style="display:flex; justify-content: center;">${{item.precioUnitario}}</div>
+      <div class="col-sm-1" style="display:flex; justify-content: center;">{{item.iva}}%</div>
+      <div class="col-sm-1" style="display:flex; justify-content: center;">${{item.subtotal}}</div>
+    </div>
+    <div class="col-sm-10" style="display:flex; justify-content: flex-end;">
+      <div class="col-auto">
+          <h4>TOTAL ${{factura.total}}</h4>
+      </div>
+    </div>
+  </div>
+
+<div class="form-group row">
+  <div class="col-sm-10" style="display:flex; justify-content: space-between">
+    <div class="col-auto" *ngIf="!detalles">
+      <button type="submit" class="btn btn-primary" [disabled]="!estaCompleta()">Guardar</button>
+    </div>
+    <div class="col-auto">
+      <button type="button" class="btn btn-danger" routerLink="/facturas">{{detalles ? 'Volver' : 'Cancelar'}}</button>
+    </div>
+  </div>
+</div>
+</form>

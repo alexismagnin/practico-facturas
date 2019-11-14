@@ -1,0 +1,38 @@
+<div style="border-bottom: dimgray solid 1px;">
+<h3 class="text-secondary">{{modificar ? 'EDITAR' : 'NUEVO'}} CLIENTE<!-- {{modificar ? ': '+cliente.id+' - '+cliente.nombre : ''}} --></h3>
+</div><br>
+<form (ngSubmit)="guardar()">
+    <div class="form-group row">
+      <label for="edID" class="col-sm-2 col-form-label">ID</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="edID" [(ngModel)]="cliente.id" name="clienteID" placeholder="id">
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="edNombre" class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="edNombre" [(ngModel)]="cliente.nombre" name="clienteNombre" placeholder="Nombre">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="edDireccion" class="col-sm-2 col-form-label">Dirección</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="edDireccion" [(ngModel)]="cliente.direccion" name="clienteDireccion" placeholder="Dirección">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="edCuit" class="col-sm-2 col-form-label">CUIT</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="edCuit" [(ngModel)]="cliente.cuit" name="clienteCuit" placeholder="CUIT">
+        </div>
+      </div>
+    
+    <div class="form-group row" style="justify-content: space-between">
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" [disabled]="cliente.id==null || cliente.id==''">Guardar</button>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-danger" routerLink="/clientes">Cancelar</button>
+      </div>
+    </div>
+  </form>
