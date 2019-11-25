@@ -4,7 +4,7 @@ import { ProductoRepoService } from '../producto-repo.service';
 @Component({
   selector: 'app-producto-lista',
   templateUrl: './producto-lista.component.html',
-  styleUrls: ['./producto-lista.component.css']
+  styleUrls: []
 })
 export class ProductoListaComponent implements OnInit {
 

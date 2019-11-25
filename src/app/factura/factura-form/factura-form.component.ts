@@ -12,7 +12,7 @@ import { Cliente } from 'src/app/modelo/cliente';
 @Component({
   selector: 'app-factura-form',
   templateUrl: './factura-form.component.html',
-  styleUrls: ['./factura-form.component.css'],
+  styleUrls: [],
   providers: [DatePipe]
 })
 export class FacturaFormComponent implements OnInit {
